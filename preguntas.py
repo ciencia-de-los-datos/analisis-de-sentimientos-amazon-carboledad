@@ -31,7 +31,7 @@ def pregunta_01():
         )
     # Separe los grupos de mensajes etiquetados y no etiquetados.
     #df_tagged = ____[____["____"].____()]
-    df_tagged = df[df["lbl"].notna()]
+    df_tagge = df[df["lbl"].notna()]
     df_untagged = df[df["lbl"].isna()]
 
     x_tagged = df_tagged["msg"]
