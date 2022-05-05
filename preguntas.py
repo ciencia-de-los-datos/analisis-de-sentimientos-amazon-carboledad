@@ -120,11 +120,11 @@ def pregunta_04():
     # inferior de 5 palabras. Solo deben analizarse palabras conformadas por
     # letras.
     countVectorizer = CountVectorizer(
-        analyzer='word',
+        analyzer=analyzer,
         lowercase=True,
         stop_words="english",
         token_pattern=r"(?u)\b[a-zA-Z][a-zA-Z]+\b",
-        binary=True,
+        binary=False,
         max_df=1.0,
         min_df=5,
     )
@@ -142,7 +142,7 @@ def pregunta_04():
     # considerar 10 valores entre 0.1 y 1.0 para el parámetro alpha de
     # BernoulliNB.
     param_grid = {
-        "BernoulliNB__alpha": np.arange(0.1, 1.1, 0.1),
+        "BernoulliNB__alpha": np.arange(0.1, 1.1, 10),
     }
 
     
@@ -154,7 +154,7 @@ def pregunta_04():
         cv=5,
         scoring="accuracy",
         refit=True,
-        return_train_score=False,
+        return_train_score=True,
     )
 
     # Búsque la mejor combinación de regresores
